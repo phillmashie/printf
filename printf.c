@@ -12,7 +12,9 @@ int _printf(const char *format, ...)
 	int i, j, printed = 0, printed_chars = 0;
 	char c, x;
 	char *s;
+	va_list list;
 
+	va_start(list, format);
 	if (format == NULL)
 		return (-1);
 	for (i = 0; format && format[i] != '\0'; i++)
@@ -48,5 +50,6 @@ int _printf(const char *format, ...)
 			printed = handle_print(format);
 		}
 	}
+	va_end(list);
 	return (printed_chars);
 }
